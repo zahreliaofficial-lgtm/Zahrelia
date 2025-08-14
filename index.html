@@ -1,66 +1,59 @@
-해<!doctype html>
+<!doctype html>
 <html lang="ko">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Zahrélia — Quiet Rituals</title>
 
-  <!-- Favicon / PWA Icons (이미 올려둔 파일 경로) -->
+  <!-- Favicon / PWA -->
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180.png">
 
   <style>
     :root{
-      --bg:#f5f3e9;
-      --panel:#ffffff;
-      --ink:#243024;
-      --muted:#6b6b66;
-      --gold:#cba556;
-      --ring:#e5e0d3;
-      --radius:12px;
+      --bg:#f5f3e9; --panel:#fff; --ink:#243024; --muted:#6b6b66;
+      --gold:#cba556; --ring:#e5e0d3; --radius:12px;
     }
     *{box-sizing:border-box}
-    html,body{margin:0;background:var(--bg);color:var(--ink);font-family:ui-sans-serif,system-ui,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",Segoe UI,Roboto,Helvetica,Arial}
+    html,body{margin:0;background:var(--bg);color:var(--ink);
+      font-family:ui-sans-serif,system-ui,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",Segoe UI,Roboto,Helvetica,Arial}
     img{max-width:100%;display:block}
-    a{color:inherit;text-decoration:none}
-    header{padding:14px;border-bottom:1px solid var(--ring);background:#fff;position:sticky;top:0;z-index:5}
+    a{text-decoration:none;color:inherit}
+
+    header{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid var(--ring);padding:14px}
     .brand{display:flex;align-items:center;justify-content:center;gap:10px}
     .brand img{height:44px}
-    .brand .txt{font-weight:700;letter-spacing:.24em}
-    main{padding:20px;padding-bottom:90px;max-width:980px;margin:0 auto}
-    footer{color:#888;text-align:center;font-size:12px;padding:20px}
+    .brand .txt{font-weight:800;letter-spacing:.24em}
 
-    /* 카드 */
-    .card{background:var(--panel);border:1px solid var(--ring);border-radius:var(--radius);padding:18px;box-shadow:0 1px 0 rgba(0,0,0,.02);margin:14px 0}
+    main{max-width:980px;margin:0 auto;padding:20px 20px 92px}
+    footer{color:#888;text-align:center;font-size:12px;padding:18px}
+
+    .card{background:var(--panel);border:1px solid var(--ring);border-radius:var(--radius);
+      padding:18px;box-shadow:0 1px 0 rgba(0,0,0,.03);margin:14px 0}
     h1{font-size:26px;margin:8px 0;color:#2d3b2d}
     .muted{color:var(--muted);font-size:13px}
-
-    /* 버튼 / 필 */
     .btn{display:inline-block;background:var(--gold);color:#fff;border:none;padding:10px 16px;border-radius:999px;font-weight:700}
     .pill{display:inline-block;background:#f0e7d4;color:#9b7b38;border-radius:999px;padding:4px 10px;font-size:12px}
 
-    /* 네비게이션(하단 탭) */
     nav{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--ring);display:flex;gap:4px}
     nav a{flex:1;text-align:center;padding:12px 4px;color:#444}
     nav a.active{color:var(--gold);font-weight:700}
 
-    /* 히어로 */
     .hero{display:grid;gap:12px}
     .hero .copy{padding:22px}
     .hero .title{font-size:36px;line-height:1.1;margin:8px 0;font-weight:800}
     .hero .subtitle{color:#666;font-size:15px}
     .hero-art{width:100%;height:260px;border-radius:12px;background-position:center;background-size:cover;border:1px solid var(--ring)}
-    @media (min-width:820px){
+    @media(min-width:820px){
       .hero{grid-template-columns:1fr 1.2fr;align-items:stretch}
       .hero .copy{padding:28px}
       .hero-art{height:auto;min-height:260px}
     }
-
-    /* 목록 카드 스타일 */
     .tag{display:inline-block;margin-bottom:8px;background:#f3efe6;border:1px solid var(--ring);color:#7a6a40;border-radius:999px;padding:4px 10px;font-size:12px}
     .grid{display:grid;gap:12px}
     @media(min-width:760px){.grid{grid-template-columns:repeat(2,1fr)}}
+    input,textarea{font:inherit}
   </style>
 </head>
 <body>
@@ -86,7 +79,7 @@
   <footer>© Zahrélia — Quiet Rituals</footer>
 
   <script>
-  /* ================== 데이터 ================== */
+  /* =============== 데이터 =============== */
   const DATA = {
     home:{
       eyebrow:"ZAHRÉLIA",
@@ -102,24 +95,9 @@
       {title:"저녁 리추얼: 회복의 감사", desc:"하루를 돌아보고 감사 한 가지 적기"}
     ],
     scents:[
-      {
-        tag:"Morning",
-        name:"Calme",
-        note:"시트러스 · 머스크",
-        price:"₩69,000"
-      },
-      {
-        tag:"Evening",
-        name:"Sérénité",
-        note:"허브 · 로즈 · 앰버",
-        price:"₩79,000"
-      },
-      {
-        tag:"Night",
-        name:"Lumière",
-        note:"루바브 · 매그놀리아 · 오스만투스 · 크리스탈 머스크",
-        price:"₩89,000"
-      }
+      {tag:"Morning", name:"Calme",     note:"시트러스 · 머스크",                         price:"₩69,000"},
+      {tag:"Evening", name:"Sérénité",  note:"허브 · 로즈 · 앰버",                         price:"₩79,000"},
+      {tag:"Night",   name:"Lumière",   note:"루바브 · 매그놀리아 · 오스만투스 · 크리스탈 머스크", price:"₩89,000"}
     ],
     booking:{
       copy:"체험 예약을 통해 리추얼 · 향 · 공간을 직접 경험해 보세요.",
@@ -131,12 +109,12 @@
     }
   };
 
-  /* ================== 뷰 ================== */
+  /* =============== 뷰 =============== */
   function mountHeroArt(el){
     const fallback = 'linear-gradient(180deg,#fff,#f8f4ec)';
     el.style.backgroundImage = fallback;
     const test = new Image();
-    test.onload = ()=>{ el.style.backgroundImage = "url('/hero-banner.PNG')"; };
+    test.onload  = ()=>{ el.style.backgroundImage = "url('/hero-banner.PNG')"; };
     test.onerror = ()=>{ el.style.backgroundImage = fallback; };
     test.src = '/hero-banner.PNG';
   }
@@ -163,8 +141,7 @@
             <p class="muted" style="margin:6px 0 0">${n.body}</p>
           </div>
         `).join('')}
-      </section>
-    `;
+      </section>`;
   }
 
   function ViewRituals(){
@@ -180,8 +157,7 @@
             </div>
           `).join('')}
         </div>
-      </section>
-    `;
+      </section>`;
   }
 
   function ViewScents(){
@@ -194,91 +170,75 @@
             <h2 style="margin:6px 0">${s.name}</h2>
             <p class="muted">${s.note}</p>
             <strong>${s.price}</strong>
-            <div style="text-align:right"><button class="btn">알림</button></div>
+            <div style="text-align:right"><button class="btn" type="button">알림</button></div>
           </div>
         `).join('')}
-      </section>
-    `;
+      </section>`;
   }
 
-function ViewBooking(){
-  return `
-    <section class="card">
-      <h1>예약</h1>
-      <p class="muted">온라인 예약은 준비 중입니다. 문의 탭에서 메시지를 남겨주세요.</p>
-      <div class="hero art"
-           style="height:220px;
-                  background-image:url('/hero-banner.PNG');
-                  background-size:cover;
-                  background-position:center;
-                  border-radius:12px;"></div>
-    </section>`;
-}
+  function ViewBooking(){
+    return `
+      <section class="card">
+        <h1>예약</h1>
+        <p class="muted">온라인 예약은 준비 중입니다. 문의 탭에서 메시지를 남겨주세요.</p>
+        <div class="hero-art" style="height:220px;background-image:url('/hero-banner.PNG');background-size:cover;background-position:center;border-radius:12px"></div>
+      </section>`;
+  }
+
   function ViewAbout(){
     return `
       <section class="card">
         <h1>${DATA.about.title}</h1>
         <p class="muted">${DATA.about.body}</p>
-      </section>
-    `;
+      </section>`;
   }
 
-function ViewContact(){
-  return `
-    <section class="card">
-      <h1>문의</h1>
+  function ViewContact(){
+    return `
+      <section class="card">
+        <h1>문의</h1>
 
-      <!-- Netlify Forms: 실제 제출 폼 -->
-      <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-        <input type="hidden" name="form-name" value="contact">
-        <input type="hidden" name="_redirect" value="https://zahrelia.com/#contact?ok=1">
+        <!-- Netlify Forms: 실제 제출 폼 -->
+        <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="contact">
+          <input type="hidden" name="_redirect" value="https://zahrelia.com/#contact?ok=1">
 
-        <p style="display:none">
-          <label>Don’t fill this out if you're human: <input name="bot-field"></label>
-        </p>
+          <p style="display:none">
+            <label>Don’t fill this out if you're human: <input name="bot-field"></label>
+          </p>
 
-        <div class="card" style="margin:12px 0">
-          <label>이름<br>
-            <input name="name" required
-              style="width:100%;padding:10px;border:1px solid var(--ring);border-radius:8px">
-          </label>
+          <div class="card" style="margin:12px 0">
+            <label>이름<br>
+              <input name="name" required
+                style="width:100%;padding:10px;border:1px solid var(--ring);border-radius:8px">
+            </label>
+          </div>
+
+          <div class="card" style="margin:12px 0">
+            <label>이메일<br>
+              <input type="email" name="email" required
+                style="width:100%;padding:10px;border:1px solid var(--ring);border-radius:8px">
+            </label>
+          </div>
+
+          <div class="card" style="margin:12px 0">
+            <label>메시지<br>
+              <textarea name="message" rows="5" required
+                style="width:100%;padding:10px;border:1px solid var(--ring);border-radius:8px"></textarea>
+            </label>
+          </div>
+
+          <button class="btn" type="submit">보내기</button>
+        </form>
+
+        <div id="contact-ok" class="card" style="margin-top:12px;display:none">
+          <strong>메시지가 전송되었습니다.</strong>
+          <p class="muted" style="margin:6px 0 0">빠른 시간 내에 답장드릴게요. 감사합니다.</p>
         </div>
-
-        <div class="card" style="margin:12px 0">
-          <label>이메일<br>
-            <input type="email" name="email" required
-              style="width:100%;padding:10px;border:1px solid var(--ring);border-radius:8px">
-          </label>
-        </div>
-
-        <div class="card" style="margin:12px 0">
-          <label>메시지<br>
-            <textarea name="message" rows="5" required
-              style="width:100%;padding:10px;border:1px solid var(--ring);border-radius:8px"></textarea>
-          </label>
-        </div>
-
-        <button class="btn" type="submit">보내기</button>
-      </form>
-
-      <div id="contact-ok" class="card" style="margin-top:12px; display:none;">
-        <strong>메시지가 전송되었습니다.</strong>
-        <p class="muted" style="margin:6px 0 0">빠른 시간 내에 답장드릴게요. 감사합니다.</p>
-      </div>
-    </section>
-
-// 문의 폼 제출 후 확인 메시지 표시
-try {
-  const u = new URL(location.href);
-  if (u.hash.startsWith('#contact') && u.search.includes('ok=1')) {
-    document.getElementById('contact-ok').style.display = 'block';
-    history.replaceState(null, '', '/#contact');
-  }
-} catch (e) {}
-}
+      </section>`;
   }
 
-  /* ================== 라우팅 ================== */
+  /* =============== 라우팅 =============== */
   const ROUTES = {
     home:ViewHome,
     rituals:ViewRituals,
@@ -300,9 +260,21 @@ try {
     const root = document.getElementById('view');
     root.innerHTML = view;
 
-    // 히어로 이미지 적용
+    // 히어로 배경 적용
     const art = document.getElementById('hero-art');
     if(art) mountHeroArt(art);
+
+    // 문의 제출 성공 표시
+    if(hash==='contact'){
+      try{
+        const u = new URL(location.href);
+        if(u.search.includes('ok=1')){
+          const ok = document.getElementById('contact-ok');
+          if(ok) ok.style.display = 'block';
+          history.replaceState(null,'','#contact'); // 깔끔한 URL
+        }
+      }catch(e){}
+    }
 
     setActive(ROUTES[hash] ? hash : 'home');
   }
@@ -310,12 +282,11 @@ try {
   window.addEventListener('hashchange', render);
   window.addEventListener('load', render);
   </script>
-  <!-- Netlify가 폼을 인식하도록 하는 숨김 템플릿 -->
-<form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
-  <input type="hidden" name="form-name" value="contact">
-  <input name="name">
-  <input name="email" type="email">
-  <textarea name="message"></textarea>
-</form>
+
+  <!-- Netlify가 폼을 인식하도록 하는 숨김 템플릿 (빌드 시 스캔용) -->
+  <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+    <input type="hidden" name="form-name" value="contact">
+    <input name="name"><input name="email" type="email"><textarea name="message"></textarea>
+  </form>
 </body>
 </html>
