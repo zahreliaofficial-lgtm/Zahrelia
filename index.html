@@ -49,171 +49,126 @@
 
   footer{color:#888;text-align:center;font-size:12px;padding:20px}
 </style>
-</head>
 <body>
+  <header>
+    <div class="brand">
+      <img src="/logo.png" alt="Zahrélia" onerror="this.style.display='none'">
+      <span class="txt" style="display:none">ZAHRÉLIA</span>
+    </div>
+  </header>
 
-<header>
-  <div class="brand">
-    <img src="/logo.png" alt="Zahrélia" onerror="this.remove()">
-    <span class="txt" style="display:none">ZAHRÉLIA</span>
-  </div>
-</header>
+  <main id="view"></main>
 
-<main id="view"></main>
+  <nav>
+    <a href="#home" id="tab-home" class="active">홈</a>
+    <a href="#rituals" id="tab-rituals">리추얼</a>
+    <a href="#scents" id="tab-scents">향수</a>
+    <a href="#booking" id="tab-booking">예약</a>
+    <a href="#about" id="tab-about">소개</a>
+    <a href="#contact" id="tab-contact">문의</a> <!-- 문의 추가 -->
+  </nav>
 
-<nav>
-  <a href="#home"    id="tab-home"    class="active">홈</a>
-  <a href="#rituals" id="tab-rituals">리추얼</a>
-  <a href="#scents"  id="tab-scents">향수</a>
-  <a href="#booking" id="tab-booking">예약</a>
-  <a href="#about"   id="tab-about">소개</a>
-  <a href="#contact" id="tab-contact">문의</a>
-</nav>
+  <footer>© Zahrélia — Quiet Rituals</footer>
 
-<footer>© Zahrélia — Quiet Rituals</footer>
+  <script>
+    /* ===== 데이터 ===== */
+    const DATA = {
+      home: {
+        eyebrow: "ZAHRÉLIA",
+        title: "The Quiet Generation",
+        subtitle: "리추얼 · 향 · 공간으로 완성하는 고요의 일상",
+        notices: [
+          { title: "환영합니다", body: "당신 안의 고요를 기억하세요." },
+          { title: "리추얼 팝업", body: "고요의 하루 리추얼 체험 사전예약" }
+        ]
+      },
+      rituals: [
+        { title: "아침 리추얼: 오늘의 숨", desc: "존재의 첫 숨을 들이마시는 시간" },
+        { title: "저녁 리추얼: 회복의 감사", desc: "하루를 돌이키며 자신에게 감사하는 시간" }
+      ],
+      scents: [
+        { tag: "Morning", title: "Calme", desc: "시트러스 · 머스크", price: "₩69,000" },
+        { tag: "Evening", title: "Sérénité", desc: "허브 · 로즈 · 앰버", price: "₩79,000" },
+        { tag: "Night", title: "Lumière", desc: "루바브 · 매그놀리아 · 크리스탈 머스크", price: "₩89,000" }
+      ]
+    };
 
-<script>
-/* ===== 데이터 ===== */
-const DATA = {
-  ...
-};
+    /* ===== 뷰 함수들 ===== */
+    function ViewHome() {
+      return `
+        <section class="card">
+          <h1>${DATA.home.eyebrow}</h1>
+          <h2>${DATA.home.title}</h2>
+          <p>${DATA.home.subtitle}</p>
+          ${DATA.home.notices.map(n => `<div class="card"><h3>${n.title}</h3><p>${n.body}</p></div>`).join("")}
+        </section>`;
+    }
 
-function ViewContact(){
-  return `
-    <section class="card">
-      <h1>문의</h1>
-      <form name="contact" method="POST" data-netlify="true">
-        <input type="hidden" name="form-name" value="contact">
-        <div class="card" style="margin:12px 0">
-          <label>이름<br><input name="name" required style="width:100%;padding:10px;border:1px solid var(--ring);border-radius:8px"></label>
-        </div>
-        <div class="card" style="margin:12px 0">
-          <label>이메일<br><input type="email" name="email" required style="width:100%;padding:10px;border:1px solid var(--ring);border-radius:8px"></label>
-        </div>
-        <div class="card" style="margin:12px 0">
-          <label>메시지<br><textarea name="message" rows="5" required style="width:100%;padding:10px;border:1px solid var(--ring);border-radius:8px"></textarea></label>
-        </div>
-        <button class="btn" type="submit">보내기</button>
-      </form>
-    </section>`;
-}
-  home: {
-    eyebrow: "ZAHRÉLIA",
-    title: "The Quiet Generation",
-    subtitle: "리추얼 · 향 · 공간으로 완성하는 고요의 일상",
-    notices: [
-      { title:"환영합니다", body:"당신 안의 고요를 기억하세요." },
-      { title:"리추얼 팝업", body:"고요의 하루 리추얼 체험 오픈" }
-    ]
-  },
-  rituals: [
-    { title:"아침 리추얼: 오늘의 숨", desc:"존재의 첫 숨을 의식하며 시작" },
-    { title:"저녁 리추얼: 회복의 감사", desc:"하루를 돌아보고 감사 1가지를 기록" }
-  ],
-  scents: [
-    { tag:"Morning", name:"Calme",    notes:"시트러스 · 머스크",                          price:"₩69,000" },
-    { tag:"Evening", name:"Sérénité", notes:"허브 · 로즈 · 앰버",                          price:"₩79,000" },
-    { tag:"Night",   name:"Lumière",  notes:"루바브 · 매그놀리아 · 크리스탈 머스크",            price:"₩89,000" }
-  ],
-  booking: {
-    title:"체험 예약",
-    desc:"공간 · 향 · 리추얼을 직접 경험해 보세요.",
-    slots:["평일 오후","주말 오전","주말 오후"]
-  },
-  about: {
-    title:"Zahrélia 소개",
-    body:`자흐렐리아는 고요 속에서 빛나는 일상을 위해
-          리추얼과 향, 공간을 디자인합니다. 당신의 리듬을 존중하는
-          작은 의식들이 하루를 더 단단하게 만듭니다.`
-  }
-};
+    function ViewRituals() {
+      return DATA.rituals.map(r => `
+        <section class="card">
+          <h2>${r.title}</h2>
+          <p>${r.desc}</p>
+        </section>`).join("");
+    }
 
-/* ===== 뷰 함수 ===== */
-const $  = s => document.querySelector(s);
-const $$ = s => Array.from(document.querySelectorAll(s));
-function setActive(id){ $$('.active').forEach(e=>e.classList.remove('active')); $('#'+id)?.classList.add('active'); }
-
-function ViewHome(){
-  const h = DATA.home;
-  return `
-    <section class="hero">
-      <div class="eyebrow">${h.eyebrow}</div>
-      <div class="title">${h.title}</div>
-      <div class="subtitle">${h.subtitle}</div>
-      <button class="btn">체험 예약</button>
-      <span class="tag" style="margin-left:8px">New</span>
-      <div class="art" style="margin-top:12px"></div>
-    </section>
-    <section class="card">
-      <h1>공지</h1>
-      ${h.notices.map(n=>`
-        <div class="card" style="margin:12px 0">
-          <strong>${n.title}</strong>
-          <p class="muted">${n.body}</p>
-        </div>`).join('')}
-    </section>`;
-}
-
-function ViewRituals(){
-  return `
-    <section class="card">
-      <h1>리추얼</h1>
-      <div class="grid">
-        ${DATA.rituals.map(r=>`
-          <div class="card">
-            <div class="tag">Ritual</div>
-            <h2 style="margin:8px 0">${r.title}</h2>
-            <p class="muted">${r.desc}</p>
-          </div>`).join('')}
-      </div>
-    </section>`;
-}
-
-function ViewScents(){
-  return `
-    <section class="card">
-      <h1>향수</h1>
-      ${DATA.scents.map(s=>`
-        <div class="card">
+    function ViewScents() {
+      return DATA.scents.map(s => `
+        <section class="card">
           <span class="tag">${s.tag}</span>
-          <h2 style="margin:8px 0">${s.name}</h2>
-          <p class="muted">${s.notes}</p>
+          <h2>${s.title}</h2>
+          <p>${s.desc}</p>
           <strong>${s.price}</strong>
-          <div style="float:right;margin-top:-28px"><button class="btn">알림</button></div>
-        </div>`).join('')}
-    </section>`;
-}
+          <button>알림</button>
+        </section>`).join("");
+    }
 
-function ViewBooking(){
-  const b = DATA.booking;
-  return `
-    <section class="card">
-      <h1>${b.title}</h1>
-      <p class="muted">${b.desc}</p>
-      <div class="grid">
-        ${b.slots.map(t=>`<div class="card"><strong>${t}</strong><div style="margin-top:8px"><button class="btn">예약</button></div></div>`).join('')}
-      </div>
-    </section>`;
-}
+    function ViewBooking() {
+      return `<section class="card"><h1>예약</h1><p>예약 페이지 내용</p></section>`;
+    }
 
-function ViewAbout(){
-  const a = DATA.about;
-  return `
-    <section class="card">
-      <h1>${a.title}</h1>
-      <p class="muted" style="white-space:pre-line">${a.body}</p>
-    </section>`;
-}
+    function ViewAbout() {
+      return `<section class="card"><h1>소개</h1><p>브랜드 소개 페이지입니다.</p></section>`;
+    }
 
-/* ===== 라우팅 ===== */
-const ROUTES = {home:ViewHome, rituals:ViewRituals, scents:ViewScents, booking:ViewBooking, about:ViewAbout};
-function route(){
-  const key = (location.hash||'#home').slice(1);
-  $('#view').innerHTML = (ROUTES[key]||ViewHome)();
-  setActive('tab-'+key);
-}
-window.addEventListener('hashchange', route);
-window.addEventListener('load', route);
-</script>
+    function ViewContact() {
+      return `
+        <section class="card">
+          <h1>문의</h1>
+          <form name="contact" method="POST" data-netlify="true">
+            <input type="hidden" name="form-name" value="contact">
+            <div class="card" style="margin:12px 0">
+              <label>이름<br><input name="name" required style="width:100%;padding:10px;border:1px solid var(--ring);border-radius:8px"></label>
+            </div>
+            <div class="card" style="margin:12px 0">
+              <label>이메일<br><input type="email" name="email" required style="width:100%;padding:10px;border:1px solid var(--ring);border-radius:8px"></label>
+            </div>
+            <div class="card" style="margin:12px 0">
+              <label>메시지<br><textarea name="message" rows="5" required style="width:100%;padding:10px;border:1px solid var(--ring);border-radius:8px"></textarea></label>
+            </div>
+            <button class="btn" type="submit">보내기</button>
+          </form>
+        </section>`;
+    }
+
+    /* ===== 라우트 매핑 ===== */
+    const ROUTES = {
+      home: ViewHome,
+      rituals: ViewRituals,
+      scents: ViewScents,
+      booking: ViewBooking,
+      about: ViewAbout,
+      contact: ViewContact
+    };
+
+    /* ===== 라우팅 실행 ===== */
+    function render(hash) {
+      const page = hash.replace("#", "") || "home";
+      document.querySelector("#view").innerHTML = ROUTES[page] ? ROUTES[page]() : ViewHome();
+      document.querySelectorAll("nav a").forEach(a => a.classList.toggle("active", a.getAttribute("href") === `#${page}`));
+    }
+
+    window.addEventListener("hashchange", () => render(location.hash));
+    window.addEventListener("load", () => render(location.hash));
+  </script>
 </body>
-</html>
