@@ -73,6 +73,26 @@
 
 <script>
 /* ===== 데이터 ===== */
+<script>
+function ViewContact(){
+  return `
+    <section class="card">
+      <h1>문의</h1>
+      <form name="contact" method="POST" data-netlify="true">
+        <input type="hidden" name="form-name" value="contact">
+        <div class="card" style="margin:12px 0">
+          <label>이름<br><input name="name" required style="width:100%;padding:10px;border:1px solid var(--ring);border-radius:8px"></label>
+        </div>
+        <div class="card" style="margin:12px 0">
+          <label>이메일<br><input type="email" name="email" required style="width:100%;padding:10px;border:1px solid var(--ring);border-radius:8px"></label>
+        </div>
+        <div class="card" style="margin:12px 0">
+          <label>메시지<br><textarea name="message" rows="5" required style="width:100%;padding:10px;border:1px solid var(--ring);border-radius:8px"></textarea></label>
+        </div>
+        <button class="btn" type="submit">보내기</button>
+      </form>
+    </section>`;
+}
 const DATA = {
   home: {
     eyebrow: "ZAHRÉLIA",
