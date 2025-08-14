@@ -202,15 +202,18 @@
   }
 
   function ViewBooking(){
-    return `
-      <section class="card">
-        <h1>예약</h1>
-        <p class="muted">${DATA.booking.copy}</p>
-        <a class="btn" href="https://calendly.com/" target="_blank" rel="noopener">예약하기</a>
-      </section>
-    `;
-  }
-
+  return `
+    <section class="card">
+      <h1>예약</h1>
+      <p class="muted">온라인 예약은 준비 중입니다. 문의 탭에서 메시지를 남겨주세요.</p>
+      <div class="hero art"
+           style="height:220px;
+                  background-image:url('/hero-banner.PNG');
+                  background-size:cover;
+                  background-position:center;
+                  border-radius:12px;"></div>
+    </section>`;
+}
   function ViewAbout(){
     return `
       <section class="card">
