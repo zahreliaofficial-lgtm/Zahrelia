@@ -39,11 +39,40 @@
   </style>
 </head>
 <body>
-<header>
-  <div class="brand">
-    <img src="/logo.png" alt="Zahrélia Logo" style="height:48px">
-  </div>
-</header>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zahrélia</title>
+
+  <!-- 파비콘 설정 -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+
+  <!-- 스타일 -->
+  <style>
+    body {font-family: Arial, sans-serif; margin: 0; padding: 0;}
+    header {padding: 10px 14px; display: flex; align-items: center;}
+    .brand {display: flex; align-items: center; gap: 12px;}
+    .brand img {height: 44px; display: block;}
+    .brand .txt {font-weight: 700; letter-spacing: 1px;}
+    main {max-width: 920px; margin: 0 auto; padding: 16px;}
+    .card {background: var(--panel); border: 1px solid #ddd; padding: 12px; border-radius: 8px;}
+    h1 {font-size: 22px; margin: 0 0 6px;}
+    .muted {color: var(--muted); font-size: 13px;}
+    .pill {display: inline-block; padding: 4px 8px; border-radius: 50px; background: var(--gold); color: white;}
+    .btn {display: inline-block; background: var(--gold); color: white; padding: 8px 12px; border-radius: 4px; text-decoration: none;}
+    .row {display: flex; justify-content: space-between; align-items: center;}
+    .grid {display: grid; grid-template-columns: 1fr 1fr; gap: 12px;}
+    @media (min-width: 700px) {
+      .grid {grid-template-columns: repeat(3, 1fr);}
+    }
+    nav {position: fixed; left: 0; right: 0; bottom: 0; background: white; display: flex; border-top: 1px solid #ddd;}
+    nav a {flex: 1; text-align: center; text-decoration: none; color: black; padding: 10px 0;}
+    nav a.active {color: var(--gold); font-weight: 700;}
+    footer {color: #888; text-align: center; font-size: 12px; padding: 12px;}
+    .hero {background: linear-gradient(180deg, #fff, #f9f9f9); border-radius: var(--radius); padding: 20px;}
+  </style>
+</head>
   <main id="view"></main>
 
   <nav>
