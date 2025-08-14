@@ -1,58 +1,73 @@
 <!doctype html>
 <html lang="ko">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Zahrélia</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Zahrélia — Quiet Rituals</title>
 
-<!-- Favicon / PWA -->
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=1">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png?v=1">
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180.png?v=1">
+  <!-- Favicon / PWA Icons (이미 올려둔 파일 경로) -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180.png">
 
-<style>
-  :root{
-    --ink:#2b2f2b; --bg:#f7f5ed; --card:#fff; --ring:#ebe6db;
-    --gold:#cba556; --muted:#808080; --radius:14px;
-  }
-  *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--ink);
-       font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,"Apple SD Gothic Neo","Noto Sans KR",sans-serif}
-  header{padding:16px 0;border-bottom:1px solid var(--ring)}
-  .brand{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:10px;justify-content:center}
-  .brand img{height:44px}
-  .brand .txt{font-weight:700;letter-spacing:.2em}
+  <style>
+    :root{
+      --bg:#f5f3e9;
+      --panel:#ffffff;
+      --ink:#243024;
+      --muted:#6b6b66;
+      --gold:#cba556;
+      --ring:#e5e0d3;
+      --radius:12px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;background:var(--bg);color:var(--ink);font-family:ui-sans-serif,system-ui,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",Segoe UI,Roboto,Helvetica,Arial}
+    img{max-width:100%;display:block}
+    a{color:inherit;text-decoration:none}
+    header{padding:14px;border-bottom:1px solid var(--ring);background:#fff;position:sticky;top:0;z-index:5}
+    .brand{display:flex;align-items:center;justify-content:center;gap:10px}
+    .brand img{height:44px}
+    .brand .txt{font-weight:700;letter-spacing:.24em}
+    main{padding:20px;padding-bottom:90px;max-width:980px;margin:0 auto}
+    footer{color:#888;text-align:center;font-size:12px;padding:20px}
 
-  main{max-width:1100px;margin:0 auto;padding:18px 14px 96px}
-  .card{background:var(--card);border:1px solid var(--ring);border-radius:var(--radius);padding:18px;margin:16px 0}
-  h1{font-size:26px;margin:6px 0}
-  .muted{color:var(--muted);font-size:14px}
-  .btn{display:inline-block;background:var(--gold);color:#fff;border:0;border-radius:999px;padding:10px 16px}
-  .tag{display:inline-block;padding:4px 10px;border-radius:999px;background:#f2eadb;color:#7a5b1e;font-size:12px}
-  .grid{display:grid;grid-template-columns:1fr;gap:12px}
-  @media(min-width:700px){ .grid{grid-template-columns:1fr 1fr} }
+    /* 카드 */
+    .card{background:var(--panel);border:1px solid var(--ring);border-radius:var(--radius);padding:18px;box-shadow:0 1px 0 rgba(0,0,0,.02);margin:14px 0}
+    h1{font-size:26px;margin:8px 0;color:#2d3b2d}
+    .muted{color:var(--muted);font-size:13px}
 
-  /* Hero */
-  .hero{background:var(--card);border:1px solid var(--ring);border-radius:var(--radius);padding:18px;margin:16px 0}
-  .hero .eyebrow{font-size:12px;letter-spacing:.24em;color:#6b6b6b}
-  .hero .title{font-weight:800;color:#3a3f33;font-size:28px;margin:6px 0 8px}
-  .hero .subtitle{color:#6b6b6b;font-size:14px;margin:0 0 12px}
-  .hero .art{width:100%;height:250px;border-radius:12px;
-             background:url('/hero-banner.PNG?v=7') center/cover no-repeat}
-  @media(min-width:820px){ .hero .art{height:280px} }
+    /* 버튼 / 필 */
+    .btn{display:inline-block;background:var(--gold);color:#fff;border:none;padding:10px 16px;border-radius:999px;font-weight:700}
+    .pill{display:inline-block;background:#f0e7d4;color:#9b7b38;border-radius:999px;padding:4px 10px;font-size:12px}
 
-  /* Bottom nav */
-  nav{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--ring);
-      display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 16px}
-  nav a{flex:1;text-align:center;text-decoration:none;color:#444;padding:12px 4px;border-radius:8px}
-  nav a.active{color:var(--gold);font-weight:700}
+    /* 네비게이션(하단 탭) */
+    nav{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--ring);display:flex;gap:4px}
+    nav a{flex:1;text-align:center;padding:12px 4px;color:#444}
+    nav a.active{color:var(--gold);font-weight:700}
 
-  footer{color:#888;text-align:center;font-size:12px;padding:20px}
-</style>
+    /* 히어로 */
+    .hero{display:grid;gap:12px}
+    .hero .copy{padding:22px}
+    .hero .title{font-size:36px;line-height:1.1;margin:8px 0;font-weight:800}
+    .hero .subtitle{color:#666;font-size:15px}
+    .hero-art{width:100%;height:260px;border-radius:12px;background-position:center;background-size:cover;border:1px solid var(--ring)}
+    @media (min-width:820px){
+      .hero{grid-template-columns:1fr 1.2fr;align-items:stretch}
+      .hero .copy{padding:28px}
+      .hero-art{height:auto;min-height:260px}
+    }
+
+    /* 목록 카드 스타일 */
+    .tag{display:inline-block;margin-bottom:8px;background:#f3efe6;border:1px solid var(--ring);color:#7a6a40;border-radius:999px;padding:4px 10px;font-size:12px}
+    .grid{display:grid;gap:12px}
+    @media(min-width:760px){.grid{grid-template-columns:repeat(2,1fr)}}
+  </style>
+</head>
 <body>
+
   <header>
     <div class="brand">
-      <img src="/logo.png" alt="Zahrélia" onerror="this.style.display='none'">
+      <img src="/logo.png" alt="Zahrélia" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
       <span class="txt" style="display:none">ZAHRÉLIA</span>
     </div>
   </header>
@@ -60,115 +75,209 @@
   <main id="view"></main>
 
   <nav>
-    <a href="#home" id="tab-home" class="active">홈</a>
+    <a href="#home"    id="tab-home"    class="active">홈</a>
     <a href="#rituals" id="tab-rituals">리추얼</a>
-    <a href="#scents" id="tab-scents">향수</a>
+    <a href="#scents"  id="tab-scents">향수</a>
     <a href="#booking" id="tab-booking">예약</a>
-    <a href="#about" id="tab-about">소개</a>
-    <a href="#contact" id="tab-contact">문의</a> <!-- 문의 추가 -->
+    <a href="#about"   id="tab-about">소개</a>
+    <a href="#contact" id="tab-contact">문의</a>
   </nav>
 
   <footer>© Zahrélia — Quiet Rituals</footer>
 
   <script>
-    /* ===== 데이터 ===== */
-    const DATA = {
-      home: {
-        eyebrow: "ZAHRÉLIA",
-        title: "The Quiet Generation",
-        subtitle: "리추얼 · 향 · 공간으로 완성하는 고요의 일상",
-        notices: [
-          { title: "환영합니다", body: "당신 안의 고요를 기억하세요." },
-          { title: "리추얼 팝업", body: "고요의 하루 리추얼 체험 사전예약" }
-        ]
-      },
-      rituals: [
-        { title: "아침 리추얼: 오늘의 숨", desc: "존재의 첫 숨을 들이마시는 시간" },
-        { title: "저녁 리추얼: 회복의 감사", desc: "하루를 돌이키며 자신에게 감사하는 시간" }
-      ],
-      scents: [
-        { tag: "Morning", title: "Calme", desc: "시트러스 · 머스크", price: "₩69,000" },
-        { tag: "Evening", title: "Sérénité", desc: "허브 · 로즈 · 앰버", price: "₩79,000" },
-        { tag: "Night", title: "Lumière", desc: "루바브 · 매그놀리아 · 크리스탈 머스크", price: "₩89,000" }
+  /* ================== 데이터 ================== */
+  const DATA = {
+    home:{
+      eyebrow:"ZAHRÉLIA",
+      title:"The Quiet Generation",
+      subtitle:"리추얼 · 향 · 공간으로 완성하는 고요의 일상",
+      notices:[
+        {title:"환영합니다", body:"당신 안의 고요를 기억하세요."},
+        {title:"리추얼 팝업", body:"고요의 하루 리추얼 체험 오픈"}
       ]
-    };
-
-    /* ===== 뷰 함수들 ===== */
-    function ViewHome() {
-      return `
-        <section class="card">
-          <h1>${DATA.home.eyebrow}</h1>
-          <h2>${DATA.home.title}</h2>
-          <p>${DATA.home.subtitle}</p>
-          ${DATA.home.notices.map(n => `<div class="card"><h3>${n.title}</h3><p>${n.body}</p></div>`).join("")}
-        </section>`;
+    },
+    rituals:[
+      {title:"아침 리추얼: 오늘의 숨", desc:"존재의 첫 숨을 의식하며 시작"},
+      {title:"저녁 리추얼: 회복의 감사", desc:"하루를 돌아보고 감사 한 가지 적기"}
+    ],
+    scents:[
+      {
+        tag:"Morning",
+        name:"Calme",
+        note:"시트러스 · 머스크",
+        price:"₩69,000"
+      },
+      {
+        tag:"Evening",
+        name:"Sérénité",
+        note:"허브 · 로즈 · 앰버",
+        price:"₩79,000"
+      },
+      {
+        tag:"Night",
+        name:"Lumière",
+        note:"루바브 · 매그놀리아 · 오스만투스 · 크리스탈 머스크",
+        price:"₩89,000"
+      }
+    ],
+    booking:{
+      copy:"체험 예약을 통해 리추얼 · 향 · 공간을 직접 경험해 보세요.",
+      btn:"체험 예약"
+    },
+    about:{
+      title:"Zahrélia",
+      body:"자흐렐리아는 고요의 감각을 일상으로 가져오는 ‘리추얼 브랜드’입니다. 향과 공간, 작은 의식들을 통해 스스로의 내면과 다시 연결되는 순간을 설계합니다."
     }
+  };
 
-    function ViewRituals() {
-      return DATA.rituals.map(r => `
-        <section class="card">
-          <h2>${r.title}</h2>
-          <p>${r.desc}</p>
-        </section>`).join("");
-    }
+  /* ================== 뷰 ================== */
+  function mountHeroArt(el){
+    const fallback = 'linear-gradient(180deg,#fff,#f8f4ec)';
+    el.style.backgroundImage = fallback;
+    const test = new Image();
+    test.onload = ()=>{ el.style.backgroundImage = "url('/hero-banner.PNG')"; };
+    test.onerror = ()=>{ el.style.backgroundImage = fallback; };
+    test.src = '/hero-banner.PNG';
+  }
 
-    function ViewScents() {
-      return DATA.scents.map(s => `
-        <section class="card">
-          <span class="tag">${s.tag}</span>
-          <h2>${s.title}</h2>
-          <p>${s.desc}</p>
-          <strong>${s.price}</strong>
-          <button>알림</button>
-        </section>`).join("");
-    }
+  function ViewHome(){
+    return `
+      <section class="card hero">
+        <div class="copy">
+          <div class="eyebrow muted">${DATA.home.eyebrow}</div>
+          <div class="title">${DATA.home.title}</div>
+          <div class="subtitle">${DATA.home.subtitle}</div>
+          <div style="margin-top:14px">
+            <a class="btn" href="#booking">${DATA.booking.btn}</a>
+            <span class="pill" style="margin-left:8px">New</span>
+          </div>
+        </div>
+        <div class="hero-art" id="hero-art"></div>
+      </section>
+      <section>
+        ${DATA.home.notices.map(n=>`
+          <div class="card">
+            <div class="muted" style="margin-bottom:6px">공지</div>
+            <strong>${n.title}</strong>
+            <p class="muted" style="margin:6px 0 0">${n.body}</p>
+          </div>
+        `).join('')}
+      </section>
+    `;
+  }
 
-    function ViewBooking() {
-      return `<section class="card"><h1>예약</h1><p>예약 페이지 내용</p></section>`;
-    }
-
-    function ViewAbout() {
-      return `<section class="card"><h1>소개</h1><p>브랜드 소개 페이지입니다.</p></section>`;
-    }
-
-    function ViewContact() {
-      return `
-        <section class="card">
-          <h1>문의</h1>
-          <form name="contact" method="POST" data-netlify="true">
-            <input type="hidden" name="form-name" value="contact">
-            <div class="card" style="margin:12px 0">
-              <label>이름<br><input name="name" required style="width:100%;padding:10px;border:1px solid var(--ring);border-radius:8px"></label>
+  function ViewRituals(){
+    return `
+      <section class="card">
+        <h1>리추얼</h1>
+        <div class="grid">
+          ${DATA.rituals.map(r=>`
+            <div class="card">
+              <span class="tag">Ritual</span>
+              <h2 style="margin:6px 0">${r.title}</h2>
+              <p class="muted">${r.desc}</p>
             </div>
-            <div class="card" style="margin:12px 0">
-              <label>이메일<br><input type="email" name="email" required style="width:100%;padding:10px;border:1px solid var(--ring);border-radius:8px"></label>
-            </div>
-            <div class="card" style="margin:12px 0">
-              <label>메시지<br><textarea name="message" rows="5" required style="width:100%;padding:10px;border:1px solid var(--ring);border-radius:8px"></textarea></label>
-            </div>
-            <button class="btn" type="submit">보내기</button>
-          </form>
-        </section>`;
-    }
+          `).join('')}
+        </div>
+      </section>
+    `;
+  }
 
-    /* ===== 라우트 매핑 ===== */
-    const ROUTES = {
-      home: ViewHome,
-      rituals: ViewRituals,
-      scents: ViewScents,
-      booking: ViewBooking,
-      about: ViewAbout,
-      contact: ViewContact
-    };
+  function ViewScents(){
+    return `
+      <section class="card">
+        <h1>향수</h1>
+        ${DATA.scents.map(s=>`
+          <div class="card">
+            <span class="tag">${s.tag}</span>
+            <h2 style="margin:6px 0">${s.name}</h2>
+            <p class="muted">${s.note}</p>
+            <strong>${s.price}</strong>
+            <div style="text-align:right"><button class="btn">알림</button></div>
+          </div>
+        `).join('')}
+      </section>
+    `;
+  }
 
-    /* ===== 라우팅 실행 ===== */
-    function render(hash) {
-      const page = hash.replace("#", "") || "home";
-      document.querySelector("#view").innerHTML = ROUTES[page] ? ROUTES[page]() : ViewHome();
-      document.querySelectorAll("nav a").forEach(a => a.classList.toggle("active", a.getAttribute("href") === `#${page}`));
-    }
+  function ViewBooking(){
+    return `
+      <section class="card">
+        <h1>예약</h1>
+        <p class="muted">${DATA.booking.copy}</p>
+        <a class="btn" href="https://calendly.com/" target="_blank" rel="noopener">예약하기</a>
+      </section>
+    `;
+  }
 
-    window.addEventListener("hashchange", () => render(location.hash));
-    window.addEventListener("load", () => render(location.hash));
+  function ViewAbout(){
+    return `
+      <section class="card">
+        <h1>${DATA.about.title}</h1>
+        <p class="muted">${DATA.about.body}</p>
+      </section>
+    `;
+  }
+
+  function ViewContact(){
+    return `
+      <section class="card">
+        <h1>문의</h1>
+        <form name="contact" method="POST" data-netlify="true">
+          <input type="hidden" name="form-name" value="contact">
+          <div class="card" style="margin:12px 0">
+            <label>이름<br>
+              <input name="name" required style="width:100%;padding:10px;border:1px solid var(--ring);border-radius:8px">
+            </label>
+          </div>
+          <div class="card" style="margin:12px 0">
+            <label>이메일<br>
+              <input type="email" name="email" required style="width:100%;padding:10px;border:1px solid var(--ring);border-radius:8px">
+            </label>
+          </div>
+          <div class="card" style="margin:12px 0">
+            <label>메시지<br>
+              <textarea name="message" rows="5" required style="width:100%;padding:10px;border:1px solid var(--ring);border-radius:8px"></textarea>
+            </label>
+          </div>
+          <button class="btn" type="submit">보내기</button>
+        </form>
+      </section>
+    `;
+  }
+
+  /* ================== 라우팅 ================== */
+  const ROUTES = {
+    home:ViewHome,
+    rituals:ViewRituals,
+    scents:ViewScents,
+    booking:ViewBooking,
+    about:ViewAbout,
+    contact:ViewContact
+  };
+
+  function setActive(id){
+    document.querySelectorAll('nav a').forEach(a=>a.classList.remove('active'));
+    const el = document.getElementById('tab-'+id);
+    if(el) el.classList.add('active');
+  }
+
+  function render(){
+    const hash = (location.hash.replace('#','') || 'home');
+    const view = ROUTES[hash] ? ROUTES[hash]() : ViewHome();
+    const root = document.getElementById('view');
+    root.innerHTML = view;
+
+    // 히어로 이미지 적용
+    const art = document.getElementById('hero-art');
+    if(art) mountHeroArt(art);
+
+    setActive(ROUTES[hash] ? hash : 'home');
+  }
+
+  window.addEventListener('hashchange', render);
+  window.addEventListener('load', render);
   </script>
 </body>
+</html>
