@@ -67,13 +67,17 @@
   <a href="#scents"  id="tab-scents">향수</a>
   <a href="#booking" id="tab-booking">예약</a>
   <a href="#about"   id="tab-about">소개</a>
+  <a href="#contact" id="tab-contact">문의</a>
 </nav>
 
 <footer>© Zahrélia — Quiet Rituals</footer>
 
 <script>
 /* ===== 데이터 ===== */
-<script>
+const DATA = {
+  ...
+};
+
 function ViewContact(){
   return `
     <section class="card">
@@ -93,7 +97,6 @@ function ViewContact(){
       </form>
     </section>`;
 }
-const DATA = {
   home: {
     eyebrow: "ZAHRÉLIA",
     title: "The Quiet Generation",
