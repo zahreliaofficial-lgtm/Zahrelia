@@ -1,289 +1,371 @@
 <!doctype html>
 <html lang="ko">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Zahrélia — Quiet Rituals</title>
 
-  <!-- Favicon / PWA -->
+  <!-- SEO / OG -->
+  <meta name="description" content="리추얼 · 향 · 공간으로 완성하는 고요의 일상 — Zahrélia">
+  <meta property="og:title" content="Zahrélia — The Quiet Generation">
+  <meta property="og:description" content="리추얼 · 향 · 공간으로 완성하는 고요의 일상">
+  <meta property="og:image" content="https://zahrelia.com/og-image.jpg">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://zahrelia.com/">
+
+  <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180.png">
 
   <style>
     :root{
-      --bg:#f5f3e9; --panel:#fff; --ink:#243024; --muted:#6b6b66;
-      --gold:#cba556; --ring:#e5e0d3; --radius:12px;
+      --bg:#f4f2e9; --panel:#fff; --ink:#252a25; --muted:#6e706a; --ring:#e7e1cf;
+      --gold:#c8a455; --radius:16px; --max:1080px;
     }
     *{box-sizing:border-box}
     html,body{margin:0;background:var(--bg);color:var(--ink);
-      font-family:ui-sans-serif,system-ui,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",Segoe UI,Roboto,Helvetica,Arial}
+      font:15px/1.65 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple SD Gothic Neo","Noto Sans KR",sans-serif}
     img{max-width:100%;display:block}
-    a{text-decoration:none;color:inherit}
+    a{color:inherit;text-decoration:none}
+    h1,h2,h3{margin:0 0 8px}
+    .muted{color:var(--muted)}
+    .container{max-width:var(--max);margin:0 auto;padding:20px}
+    .card{background:var(--panel);border:1px solid var(--ring);border-radius:var(--radius);padding:20px;box-shadow:0 1px 0 rgba(0,0,0,.03);margin:14px 0}
+    .btn{display:inline-block;background:var(--gold);color:#fff;border:0;border-radius:999px;padding:10px 16px;font-weight:700}
+    .tag{display:inline-block;background:#f6efe0;color:#8a6f36;border:1px solid var(--ring);padding:4px 10px;border-radius:999px;font-size:12px}
+    .grid{display:grid;gap:14px}
+    @media(min-width:760px){ .grid-2{grid-template-columns:1fr 1fr} .grid-3{grid-template-columns:repeat(3,1fr)} }
 
-    header{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid var(--ring);padding:14px}
-    .brand{display:flex;align-items:center;justify-content:center;gap:10px}
+    /* Header / Nav */
+    header{position:sticky;top:0;z-index:10;background:#ffffffbd;backdrop-filter:saturate(120%) blur(6px);border-bottom:1px solid var(--ring)}
+    .brand{max-width:var(--max);margin:0 auto;padding:14px;display:flex;gap:10px;justify-content:center;align-items:center}
     .brand img{height:44px}
-    .brand .txt{font-weight:800;letter-spacing:.24em}
+    .brand .word{font-weight:800;letter-spacing:.22em;display:none}
+    main{padding-bottom:96px}
 
-    main{max-width:980px;margin:0 auto;padding:20px 20px 92px}
-    footer{color:#888;text-align:center;font-size:12px;padding:18px}
-
-    .card{background:var(--panel);border:1px solid var(--ring);border-radius:var(--radius);
-      padding:18px;box-shadow:0 1px 0 rgba(0,0,0,.03);margin:14px 0}
-    h1{font-size:26px;margin:8px 0;color:#2d3b2d}
-    .muted{color:var(--muted);font-size:13px}
-    .btn{display:inline-block;background:var(--gold);color:#fff;border:none;padding:10px 16px;border-radius:999px;font-weight:700}
-    .pill{display:inline-block;background:#f0e7d4;color:#9b7b38;border-radius:999px;padding:4px 10px;font-size:12px}
-
-    nav{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--ring);display:flex;gap:4px}
+    nav{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--ring);display:flex}
     nav a{flex:1;text-align:center;padding:12px 4px;color:#444}
-    nav a.active{color:var(--gold);font-weight:700}
+    nav a.active{color:var(--gold);font-weight:800}
 
-    .hero{display:grid;gap:12px}
-    .hero .copy{padding:22px}
-    .hero .title{font-size:36px;line-height:1.1;margin:8px 0;font-weight:800}
-    .hero .subtitle{color:#666;font-size:15px}
-    .hero-art{width:100%;height:260px;border-radius:12px;background-position:center;background-size:cover;border:1px solid var(--ring)}
-    @media(min-width:820px){
-      .hero{grid-template-columns:1fr 1.2fr;align-items:stretch}
-      .hero .copy{padding:28px}
-      .hero-art{height:auto;min-height:260px}
-    }
-    .tag{display:inline-block;margin-bottom:8px;background:#f3efe6;border:1px solid var(--ring);color:#7a6a40;border-radius:999px;padding:4px 10px;font-size:12px}
-    .grid{display:grid;gap:12px}
-    @media(min-width:760px){.grid{grid-template-columns:repeat(2,1fr)}}
-    input,textarea{font:inherit}
+    /* Hero */
+    .hero{display:grid;gap:16px}
+    @media(min-width:860px){ .hero{grid-template-columns:1fr 1.25fr;align-items:center} }
+    .hero-title{font-size:40px;line-height:1.1;font-weight:900;margin:0}
+    .hero-sub{color:#666}
+    .hero-art{width:100%;height:280px;border-radius:16px;border:1px solid var(--ring);overflow:hidden;background:linear-gradient(180deg,#fff,#f7f2e7)}
+    .hero-art img{width:100%;height:100%;object-fit:cover}
+
+    /* Product list cards */
+    .product{display:flex;gap:14px;align-items:center}
+    .product .thumb{width:86px;height:86px;border-radius:12px;border:1px solid var(--ring);overflow:hidden;background:#f1ecdf}
+    .product .thumb img{width:100%;height:100%;object-fit:cover}
+    .product h3{margin:0}
+    .kicker{font-size:12px;letter-spacing:.24em;color:#6b6b6b}
+    .price{font-weight:800;margin-top:6px}
+
+    /* Gallery */
+    .gallery{display:grid;gap:12px}
+    @media(min-width:840px){ .gallery{grid-template-columns:repeat(3,1fr)} }
+    .gallery .ph{height:200px;border-radius:12px;border:1px solid var(--ring);background:#eee;overflow:hidden}
+    .gallery .ph img{width:100%;height:100%;object-fit:cover}
+
+    /* Product detail */
+    .pd-hero{display:grid;gap:16px}
+    @media(min-width:860px){ .pd-hero{grid-template-columns:1.2fr 1fr;align-items:stretch} }
+    .pd-img{border:1px solid var(--ring);border-radius:16px;overflow:hidden;background:#f6f2e6;height:320px}
+    .pd-img img{width:100%;height:100%;object-fit:cover}
+    .pill{display:inline-block;background:#efe6d4;color:#876c34;border-radius:999px;padding:4px 10px;font-size:12px}
+    .notes{margin:10px 0 0}
+    .fadein{opacity:0;transform:translateY(8px);animation:fade .45s ease forwards}
+    @keyframes fade{to{opacity:1;transform:none}}
   </style>
 </head>
 <body>
-
   <header>
     <div class="brand">
-      <img src="/logo.png" alt="Zahrélia" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-      <span class="txt" style="display:none">ZAHRÉLIA</span>
+      <img src="/logo.png" alt="Zahrélia" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+      <span class="word">ZAHRÉLIA</span>
     </div>
   </header>
 
-  <main id="view"></main>
+  <main id="view" class="container"></main>
 
   <nav>
     <a href="#home"    id="tab-home"    class="active">홈</a>
+    <a href="#about"   id="tab-about">소개</a>
     <a href="#rituals" id="tab-rituals">리추얼</a>
     <a href="#scents"  id="tab-scents">향수</a>
-    <a href="#booking" id="tab-booking">예약</a>
-    <a href="#about"   id="tab-about">소개</a>
+    <a href="#gallery" id="tab-gallery">갤러리</a>
     <a href="#contact" id="tab-contact">문의</a>
   </nav>
 
-  <footer>© Zahrélia — Quiet Rituals</footer>
+  <footer class="container muted">© Zahrélia — Quiet Rituals</footer>
 
   <script>
-  /* =============== 데이터 =============== */
-  const DATA = {
-    home:{
-      eyebrow:"ZAHRÉLIA",
-      title:"The Quiet Generation",
-      subtitle:"리추얼 · 향 · 공간으로 완성하는 고요의 일상",
-      notices:[
-        {title:"환영합니다", body:"당신 안의 고요를 기억하세요."},
-        {title:"리추얼 팝업", body:"고요의 하루 리추얼 체험 오픈"}
-      ]
+  /* ===================== 데이터 ===================== */
+  const IMG = {
+    hero:'/hero-banner.PNG',
+    about:'/images/about-atelier.jpg',
+    rituals:'/images/rituals-sun.jpg',
+    g1:'/images/gallery-1.jpg',
+    g2:'/images/gallery-2.jpg',
+    g3:'/images/gallery-3.jpg',
+    p_calme:'/images/p-calme.jpg',
+    p_serenite:'/images/p-serenite.jpg',
+    p_lumiere:'/images/p-lumiere.jpg'
+  };
+
+  const PRODUCTS = {
+    calme: {
+      slug:'calme', name:'Calme', tag:'Morning',
+      hero: IMG.p_calme, price:'₩69,000',
+      intro:'시트러스와 머스크가 투명하게 올라오는 잔잔한 아침의 향.',
+      notes:['베르가못','만다린','화이트 머스크'],
+      story:'아침의 첫 빛처럼 조용히 퍼지는 존재감. 숨을 고르고 마음을 맑게 합니다.'
     },
-    rituals:[
-      {title:"아침 리추얼: 오늘의 숨", desc:"존재의 첫 숨을 의식하며 시작"},
-      {title:"저녁 리추얼: 회복의 감사", desc:"하루를 돌아보고 감사 한 가지 적기"}
-    ],
-    scents:[
-      {tag:"Morning", name:"Calme",     note:"시트러스 · 머스크",                         price:"₩69,000"},
-      {tag:"Evening", name:"Sérénité",  note:"허브 · 로즈 · 앰버",                         price:"₩79,000"},
-      {tag:"Night",   name:"Lumière",   note:"루바브 · 매그놀리아 · 오스만투스 · 크리스탈 머스크", price:"₩89,000"}
-    ],
-    booking:{
-      copy:"체험 예약을 통해 리추얼 · 향 · 공간을 직접 경험해 보세요.",
-      btn:"체험 예약"
+    serenite: {
+      slug:'serenite', name:'Sérénité', tag:'Evening',
+      hero: IMG.p_serenite, price:'₩79,000',
+      intro:'허브·로즈·앰버의 따뜻한 균형, 저녁의 회복을 위한 향.',
+      notes:['허브 어코드','로즈','앰버'],
+      story:'하루의 결을 다독이며 자신에게 온기를 건네는 리추얼의 중심.'
     },
-    about:{
-      title:"Zahrélia",
-      body:"자흐렐리아는 고요의 감각을 일상으로 가져오는 ‘리추얼 브랜드’입니다. 향과 공간, 작은 의식들을 통해 스스로의 내면과 다시 연결되는 순간을 설계합니다."
+    lumiere: {
+      slug:'lumiere', name:'Lumière', tag:'Night',
+      hero: IMG.p_lumiere, price:'₩89,000',
+      intro:'루바브·매그놀리아·크리스탈 머스크. 내면의 빛이 폭발하는 순간.',
+      notes:['루바브','매그놀리아','크리스탈 머스크'],
+      story:'억눌림에서 벗어나 스스로의 광채로 피어나는 밤. The Self-Liberation Scent.'
     }
   };
 
-  /* =============== 뷰 =============== */
-  function mountHeroArt(el){
-    const fallback = 'linear-gradient(180deg,#fff,#f8f4ec)';
-    el.style.backgroundImage = fallback;
-    const test = new Image();
-    test.onload  = ()=>{ el.style.backgroundImage = "url('/hero-banner.PNG')"; };
-    test.onerror = ()=>{ el.style.backgroundImage = fallback; };
-    test.src = '/hero-banner.PNG';
-  }
+  /* ===================== 유틸 ===================== */
+  const $=s=>document.querySelector(s); const $$=s=>[...document.querySelectorAll(s)];
+  function imgOrFallback(src){ const i=new Image(); i.src=src; return src; } // 존재 안해도 CSS가 그라디언트 처리
 
+  function section(tpl){ return `<section class="card fadein">${tpl}</section>`; }
+  function setActive(id){ $$('.active').forEach(a=>a.classList.remove('active')); $('#tab-'+id)?.classList.add('active'); }
+
+  /* ===================== 뷰 ===================== */
   function ViewHome(){
     return `
-      <section class="card hero">
-        <div class="copy">
-          <div class="eyebrow muted">${DATA.home.eyebrow}</div>
-          <div class="title">${DATA.home.title}</div>
-          <div class="subtitle">${DATA.home.subtitle}</div>
-          <div style="margin-top:14px">
-            <a class="btn" href="#booking">${DATA.booking.btn}</a>
-            <span class="pill" style="margin-left:8px">New</span>
-          </div>
-        </div>
-        <div class="hero-art" id="hero-art"></div>
-      </section>
-      <section>
-        ${DATA.home.notices.map(n=>`
-          <div class="card">
-            <div class="muted" style="margin-bottom:6px">공지</div>
-            <strong>${n.title}</strong>
-            <p class="muted" style="margin:6px 0 0">${n.body}</p>
-          </div>
-        `).join('')}
-      </section>`;
-  }
-
-  function ViewRituals(){
-    return `
-      <section class="card">
-        <h1>리추얼</h1>
-        <div class="grid">
-          ${DATA.rituals.map(r=>`
-            <div class="card">
-              <span class="tag">Ritual</span>
-              <h2 style="margin:6px 0">${r.title}</h2>
-              <p class="muted">${r.desc}</p>
+      <section class="card fadein">
+        <div class="hero">
+          <div class="copy">
+            <div class="kicker">ZAHRÉLIA</div>
+            <h1 class="hero-title">The Quiet Generation</h1>
+            <p class="hero-sub">리추얼 · 향 · 공간으로 완성하는 고요의 일상</p>
+            <div style="margin-top:12px">
+              <a class="btn" href="#scents">향수 보기</a>
+              <span class="tag" style="margin-left:8px">New</span>
             </div>
-          `).join('')}
-        </div>
-      </section>`;
-  }
-
-  function ViewScents(){
-    return `
-      <section class="card">
-        <h1>향수</h1>
-        ${DATA.scents.map(s=>`
-          <div class="card">
-            <span class="tag">${s.tag}</span>
-            <h2 style="margin:6px 0">${s.name}</h2>
-            <p class="muted">${s.note}</p>
-            <strong>${s.price}</strong>
-            <div style="text-align:right"><button class="btn" type="button">알림</button></div>
           </div>
-        `).join('')}
-      </section>`;
-  }
-
-  function ViewBooking(){
-    return `
-      <section class="card">
-        <h1>예약</h1>
-        <p class="muted">온라인 예약은 준비 중입니다. 문의 탭에서 메시지를 남겨주세요.</p>
-        <div class="hero-art" style="height:220px;background-image:url('/hero-banner.PNG');background-size:cover;background-position:center;border-radius:12px"></div>
-      </section>`;
+          <div class="hero-art">
+            <img src="${imgOrFallback(IMG.hero)}" alt="" onerror="this.style.display='none'">
+          </div>
+        </div>
+      </section>
+      ${section(`
+        <h2>공지</h2>
+        <div class="grid grid-2" style="margin-top:6px">
+          <div class="card"><strong>환영합니다</strong><p class="muted">당신 안의 고요를 기억하세요.</p></div>
+          <div class="card"><strong>리추얼 팝업</strong><p class="muted">고요의 하루 리추얼 체험 오픈</p></div>
+        </div>
+      `)}
+    `;
   }
 
   function ViewAbout(){
     return `
-      <section class="card">
-        <h1>${DATA.about.title}</h1>
-        <p class="muted">${DATA.about.body}</p>
-      </section>`;
+      ${section(`
+        <h1>브랜드 소개</h1>
+        <p class="muted">자흐렐리아는 고요 속에서 빛나는 일상을 위해 리추얼과 향, 공간을 디자인합니다.</p>
+      `)}
+      ${section(`
+        <div class="grid grid-2">
+          <div>
+            <h3>Quiet Rituals</h3>
+            <p class="muted">작은 의식들이 하루의 리듬을 단단하게 만듭니다. 숨, 감사, 이완—세 가지 축을 중심으로 경험을 설계합니다.</p>
+          </div>
+          <div class="hero-art"><img src="${imgOrFallback(IMG.about)}" alt="" onerror="this.style.display='none'"></div>
+        </div>
+      `)}
+    `;
+  }
+
+  function ViewRituals(){
+    return `
+      ${section(`<h1>리추얼 가이드</h1><p class="muted">아침 — 숨 / 저녁 — 감사 / 밤 — 이완</p>`)}
+      ${section(`
+        <div class="grid grid-3">
+          <div class="card">
+            <span class="tag">Morning</span>
+            <h3>오늘의 숨</h3>
+            <p class="muted">3분간 호흡을 세며 존재를 깨웁니다.</p>
+          </div>
+          <div class="card">
+            <span class="tag">Evening</span>
+            <h3>회복의 감사</h3>
+            <p class="muted">감사 한 가지를 기록하고 몸의 긴장을 풀어줍니다.</p>
+          </div>
+          <div class="card">
+            <span class="tag">Night</span>
+            <h3>빛의 이완</h3>
+            <p class="muted">Lumière와 함께 몸을 감싸는 호흡으로 마무리.</p>
+          </div>
+        </div>
+      `)}
+    `;
+  }
+
+  function ProductCard(p){
+    return `
+      <a class="card" href="#p/${p.slug}">
+        <div class="product">
+          <div class="thumb"><img src="${imgOrFallback(p.hero)}" alt="" onerror="this.style.display='none'"></div>
+          <div>
+            <div class="tag">${p.tag}</div>
+            <h3>${p.name}</h3>
+            <p class="muted">${p.intro}</p>
+            <div class="price">${p.price}</div>
+          </div>
+        </div>
+      </a>`;
+  }
+
+  function ViewScents(){
+    return `
+      ${section(`<h1>향수</h1><p class="muted">당신의 리듬에 맞는 향을 고르세요.</p>`)}
+      <div class="grid">
+        ${ProductCard(PRODUCTS.calme)}
+        ${ProductCard(PRODUCTS.serenite)}
+        ${ProductCard(PRODUCTS.lumiere)}
+      </div>
+    `;
+  }
+
+  function ViewProduct(slug){
+    const p = PRODUCTS[slug];
+    if(!p) return ViewScents();
+    return `
+      ${section(`
+        <div class="pd-hero">
+          <div class="pd-img"><img src="${imgOrFallback(p.hero)}" alt="" onerror="this.style.display='none'"></div>
+          <div>
+            <div class="kicker">${p.tag}</div>
+            <h1 style="font-size:30px">${p.name}</h1>
+            <div class="price" style="font-size:18px;margin:8px 0">${p.price}</div>
+            <p class="muted">${p.intro}</p>
+            <div class="notes">
+              <span class="pill">${p.notes[0]}</span>
+              <span class="pill">${p.notes[1]}</span>
+              <span class="pill">${p.notes[2]}</span>
+            </div>
+            <p style="margin-top:12px">${p.story}</p>
+            <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+              <a class="btn" href="#contact">구매 문의</a>
+              <a class="btn" href="#scents" style="background:#333">다른 향 보기</a>
+            </div>
+          </div>
+        </div>
+      `)}
+      ${section(`
+        <h3>사용 팁</h3>
+        <ul class="muted" style="padding-left:18px;margin:6px 0">
+          <li>손목·귀 뒤·옷깃에 가볍게 1~2회</li>
+          <li>샤워 후 바디로션과 레이어링하면 지속력 상승</li>
+          <li>아침/저녁 루틴에 맞춰 감정 리듬을 정돈</li>
+        </ul>
+      `)}
+    `;
+  }
+
+  function ViewGallery(){
+    return `
+      ${section(`<h1>갤러리</h1><p class="muted">공간과 빛, 고요의 순간들.</p>`)}
+      <div class="gallery">
+        <div class="ph"><img src="${imgOrFallback(IMG.g1)}" alt="" onerror="this.style.display='none'"></div>
+        <div class="ph"><img src="${imgOrFallback(IMG.g2)}" alt="" onerror="this.style.display='none'"></div>
+        <div class="ph"><img src="${imgOrFallback(IMG.g3)}" alt="" onerror="this.style.display='none'"></div>
+      </div>
+    `;
   }
 
   function ViewContact(){
     return `
-      <section class="card">
+      ${section(`
         <h1>문의</h1>
-
-        <!-- Netlify Forms: 실제 제출 폼 -->
         <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
           <input type="hidden" name="form-name" value="contact">
           <input type="hidden" name="_redirect" value="https://zahrelia.com/#contact?ok=1">
-
-          <p style="display:none">
-            <label>Don’t fill this out if you're human: <input name="bot-field"></label>
-          </p>
+          <p style="display:none"><label>Don’t fill: <input name="bot-field"></label></p>
 
           <div class="card" style="margin:12px 0">
-            <label>이름<br>
-              <input name="name" required
-                style="width:100%;padding:10px;border:1px solid var(--ring);border-radius:8px">
-            </label>
+            <label>이름<br><input name="name" required style="width:100%;padding:10px;border:1px solid var(--ring);border-radius:8px"></label>
           </div>
-
           <div class="card" style="margin:12px 0">
-            <label>이메일<br>
-              <input type="email" name="email" required
-                style="width:100%;padding:10px;border:1px solid var(--ring);border-radius:8px">
-            </label>
+            <label>이메일<br><input type="email" name="email" required style="width:100%;padding:10px;border:1px solid var(--ring);border-radius:8px"></label>
           </div>
-
           <div class="card" style="margin:12px 0">
-            <label>메시지<br>
-              <textarea name="message" rows="5" required
-                style="width:100%;padding:10px;border:1px solid var(--ring);border-radius:8px"></textarea>
-            </label>
+            <label>메시지<br><textarea name="message" rows="5" required style="width:100%;padding:10px;border:1px solid var(--ring);border-radius:8px"></textarea></label>
           </div>
-
           <button class="btn" type="submit">보내기</button>
         </form>
-
         <div id="contact-ok" class="card" style="margin-top:12px;display:none">
           <strong>메시지가 전송되었습니다.</strong>
           <p class="muted" style="margin:6px 0 0">빠른 시간 내에 답장드릴게요. 감사합니다.</p>
         </div>
-      </section>`;
+      `)}
+    `;
   }
 
-  /* =============== 라우팅 =============== */
+  /* ===================== 라우팅 ===================== */
   const ROUTES = {
-    home:ViewHome,
-    rituals:ViewRituals,
-    scents:ViewScents,
-    booking:ViewBooking,
-    about:ViewAbout,
-    contact:ViewContact
+    home:()=>ViewHome(),
+    about:()=>ViewAbout(),
+    rituals:()=>ViewRituals(),
+    scents:()=>ViewScents(),
+    gallery:()=>ViewGallery(),
+    contact:()=>ViewContact(),
+    'p/calme':()=>ViewProduct('calme'),
+    'p/serenite':()=>ViewProduct('serenite'),
+    'p/lumiere':()=>ViewProduct('lumiere'),
   };
 
-  function setActive(id){
-    document.querySelectorAll('nav a').forEach(a=>a.classList.remove('active'));
-    const el = document.getElementById('tab-'+id);
-    if(el) el.classList.add('active');
+  function routeKey(){
+    const h=(location.hash||'#home').slice(1);
+    if(h.startsWith('p/')) return h; // product detail
+    return h||'home';
   }
 
   function render(){
-    const hash = (location.hash.replace('#','') || 'home');
-    const view = ROUTES[hash] ? ROUTES[hash]() : ViewHome();
-    const root = document.getElementById('view');
-    root.innerHTML = view;
+    const key=routeKey();
+    const tpl=ROUTES[key] ? ROUTES[key]() : ViewHome();
+    $('#view').innerHTML = tpl;
 
-    // 히어로 배경 적용
-    const art = document.getElementById('hero-art');
-    if(art) mountHeroArt(art);
-
-    // 문의 제출 성공 표시
-    if(hash==='contact'){
+    // 성공 메시지 표시
+    if(key==='contact'){
       try{
-        const u = new URL(location.href);
+        const u=new URL(location.href);
         if(u.search.includes('ok=1')){
-          const ok = document.getElementById('contact-ok');
-          if(ok) ok.style.display = 'block';
-          history.replaceState(null,'','#contact'); // 깔끔한 URL
+          $('#contact-ok')?.style && ($('#contact-ok').style.display='block');
+          history.replaceState(null,'','#contact');
         }
       }catch(e){}
     }
 
-    setActive(ROUTES[hash] ? hash : 'home');
+    // 탭 활성화
+    setActive(key.split('/')[0]);
+
+    // 이미지 폴백(없으면 자연스러운 배경 유지)
   }
 
   window.addEventListener('hashchange', render);
   window.addEventListener('load', render);
   </script>
 
-  <!-- Netlify가 폼을 인식하도록 하는 숨김 템플릿 (빌드 시 스캔용) -->
+  <!-- Netlify가 폼을 인식하도록 하는 숨김 템플릿 -->
   <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
     <input type="hidden" name="form-name" value="contact">
     <input name="name"><input name="email" type="email"><textarea name="message"></textarea>
