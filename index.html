@@ -1,4 +1,4 @@
-<!doctype html>
+해<!doctype html>
 <html lang="ko">
 <head>
   <meta charset="utf-8" />
@@ -267,16 +267,14 @@ function ViewContact(){
       </div>
     </section>
 
-    <script>
-      try{
-        const u = new URL(location.href);
-        if(u.hash.startsWith('#contact') && u.search.includes('ok=1')){
-          document.getElementById('contact-ok').style.display='block';
-          history.replaceState(null,'','/#contact');
-        }
-      }catch(e){}
-    </script>
-  `;
+// 문의 폼 제출 후 확인 메시지 표시
+try {
+  const u = new URL(location.href);
+  if (u.hash.startsWith('#contact') && u.search.includes('ok=1')) {
+    document.getElementById('contact-ok').style.display = 'block';
+    history.replaceState(null, '', '/#contact');
+  }
+} catch (e) {}
 }
   }
 
