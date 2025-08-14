@@ -49,14 +49,13 @@
     .hero .eyebrow{font-size:12px;letter-spacing:.14em;color:#7a7a7a;text-transform:uppercase}
     .hero .title{font-weight:800;color:#3a3f33;line-height:1.15;font-size:32px;margin:8px 0}
     .hero .subtitle{color:#6b6b6b;font-size:14px}
-.hero-art {
+    /* 히어로 배너 이미지 (빈 박스) */
+.hero .art{
   width: 100%;
-  max-width: 1000px; /* 원하는 최대 너비 */
-  height: 250px; /* 원하는 높이 */
-  background-image: url('hero-banner.PNG');
-  background-size: cover; /* 이미지 비율 유지 + 영역 가득 */
-  background-position: center; /* 중앙 정렬 */
-  border-radius: 12px; /* 모서리 둥글게 */
+  max-width: 1000px;      /* 필요시 조절 */
+  height: 250px;          /* 필요시 조절 */
+  background: url('/hero-banner.PNG?v=5') center/cover no-repeat;
+  border-radius: 12px;
 }
     @media(min-width:820px){ .hero{grid-template-columns:1.1fr 1fr} }
 
